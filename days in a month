@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int daysInMonth, i;
+    int workedDays = 0;
+    int present;   // 1 = Present, 0 = Absent
+
+    printf("Enter number of days in the month: ");
+    scanf("%d", &daysInMonth);
+
+    for (i = 1; i <= daysInMonth; i++) {
+        printf("Day %d (1 = Present, 0 = Absent): ", i);
+        scanf("%d", &present);
+
+        if (present == 1)
+            workedDays++;
+    }
+
+    printf("Total days worked in the month = %d\n", workedDays);
+
+    return 0;
+}

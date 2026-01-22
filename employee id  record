@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+
+/* Structure definition */
+struct Employee {
+    int id;
+    char name[50];
+    float salary;
+};
+
+int main() {
+    int n, i, searchID, found = 0;
+
+    printf("Enter number of records: ");
+    scanf("%d", &n);
+
+    struct Employee emp[n];
+
+    /* Input records */
+    for (i = 0; i < n; i++) {
+        printf("\nEnter details of employee %d\n", i + 1);
+
+        printf("Employee ID: ");
+        scanf("%d", &emp[i].id);
+
+        printf("Employee Name: ");
+        scanf(" %[^\n]s", emp[i].name);
+
+        printf("Salary: ");
+        scanf("%f", &emp[i].salary);
+    }
+
+    /* Search by ID */
+    printf("\nEnter Employee ID to search: ");
+    scanf("%d", &searchID);
+
+    for (i = 0; i < n; i++) {
+        if (emp[i].id == searchID) {
+            printf("\n--- Record Found ---\n");
+            printf("Employee ID   : %d\n", emp[i].id);
+            printf("Name          : %s\n", emp[i].name);
+            printf("Salary        : %.2f\n", emp[i].salary);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("\nRecord with ID %d not found.\n", searchID);
+    }
+
+    return 0;
+}

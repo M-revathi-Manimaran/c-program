@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <string.h>
+
+/* Structure to store bank account details */
+struct BankAccount {
+    char name[50];
+    int accountNo;
+    float balance;
+};
+
+/* Function to display account details */
+void displayAccount(struct BankAccount acc) {
+    printf("\nAccount Holder : %s\n", acc.name);
+    printf("Account Number : %d\n", acc.accountNo);
+    printf("Balance        : %.2f\n", acc.balance);
+}
+
+int main() {
+    struct BankAccount account;
+    int choice;
+    float amount;
+
+    // Input account details
+    printf("Enter account holder name: ");
+    scanf(" %[^\n]s", account.name);
+
+    printf("Enter account number: ");
+    scanf("%d", &account.accountNo);
+
+    printf("Enter initial balance: ");
+    scanf("%f", &account.balance);
+
+    do {
+        printf("\n--- Bank Menu ---\n");
+        printf("1. Display Account Details\n");
+        printf("2. Deposit Money\n");
+        printf("3. Withdraw Money\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1:
+                displayAccount(account);
+                break;
+            case 2:
+                printf("Enter amount to deposit: ");
+                scanf("%f", &amount);
+                account.balance += amount;
+                printf("Amount deposited successfully.\n");
+                break;
+            case 3:
+                printf("Enter amount to withdraw: ");
+                scanf("%f", &amount);
+                if(amount > account.balance)
+                    printf("Insufficient balance!\n");
+                else {
+                    account.balance -= amount;
+                    printf("Amount withdrawn successfully.\n");
+                }
+                break;
+            case 4:
+                printf("Exiting program.\n");
+                break;
+            default:
+                printf("Invalid choice!\n");
+        }
+    } while(choice != 4);
+
+    return 0;
+}

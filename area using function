@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+/* Function to calculate area of a rectangle */
+float areaRectangle(float length, float width) {
+    return length * width;
+}
+
+/* Function to calculate area of a circle */
+float areaCircle(float radius) {
+    return 3.14159 * radius * radius;
+}
+
+/* Function to calculate area of a triangle */
+float areaTriangle(float base, float height) {
+    return 0.5 * base * height;
+}
+
+int main() {
+    int choice;
+    float length, width, radius, base, height;
+
+    printf("Select shape to calculate area:\n");
+    printf("1. Rectangle\n");
+    printf("2. Circle\n");
+    printf("3. Triangle\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch(choice) {
+        case 1:
+            printf("Enter length and width: ");
+            scanf("%f %f", &length, &width);
+            printf("Area of Rectangle = %.2f\n", areaRectangle(length, width));
+            break;
+        case 2:
+            printf("Enter radius: ");
+            scanf("%f", &radius);
+            printf("Area of Circle = %.2f\n", areaCircle(radius));
+            break;
+        case 3:
+            printf("Enter base and height: ");
+            scanf("%f %f", &base, &height);
+            printf("Area of Triangle = %.2f\n", areaTriangle(base, height));
+            break;
+        default:
+            printf("Invalid choice\n");
+    }
+
+    return 0;
+}

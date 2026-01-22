@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int status;
+    int presentCount = 0;
+
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        printf("Student %d (1 = Present, 0 = Absent): ", i);
+        scanf("%d", &status);
+
+        if (status == 1)
+            presentCount++;
+    }
+
+    printf("\nNumber of present students = %d\n", presentCount);
+
+    return 0;
+}
